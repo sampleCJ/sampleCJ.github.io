@@ -79,13 +79,17 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="Find the largest palindrome made from the product of two n-digit numbers.Since the result could be very large, you should return the largest palindrome mod 1337. Example:Input: 2Output: 987Explanatio">
+<meta property="og:type" content="article">
+<meta property="og:title" content="leetcode_479">
+<meta property="og:url" content="http://yoursite.com/2018/09/12/leetcode_479/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Find the largest palindrome made from the product of two n-digit numbers.Since the result could be very large, you should return the largest palindrome mod 1337. Example:Input: 2Output: 987Explanatio">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-09-11T16:13:39.628Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="leetcode_479">
+<meta name="twitter:description" content="Find the largest palindrome made from the product of two n-digit numbers.Since the result could be very large, you should return the largest palindrome mod 1337. Example:Input: 2Output: 987Explanatio">
 
 
 
@@ -115,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/09/12/leetcode_479/"/>
 
 
 
 
 
-  <title>Hexo</title>
+  <title>leetcode_479 | Hexo</title>
   
 
 
@@ -140,8 +144,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -214,155 +217,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/12/leetocde-76/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/12/leetocde-76/" itemprop="url">leetocde_76</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-12T00:13:10+08:00">
-                2018-09-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>Given a string S and a string T, find the minimum window in S which will contain all the characters in T in complexity O(n).</p>
-<p>For example,<br>S = “ADOBECODEBANC”<br>T = “ABC”<br>Minimum window is “BANC”.</p>
-<p>Note:<br>If there is no such window in S that covers all characters in T, return the empty string “”.<br>If there are multiple such windows, you are guaranteed that there will always be only one unique minimum window in S.</p>
-</blockquote>
-<ol>
-<li><p><em>preview</em></p>
-<ul>
-<li>题目要求解法的时间复杂度为O(n)。显然，简单的字符匹配，<strong>暴力搜索</strong>肯定不满足这一要求。</li>
-<li>若想要通过当前字符，在一定条件内，查找到其对应字符串的位置。不妨考虑使用<strong>哈希表</strong>。</li>
-</ul>
-</li>
-<li><p><em>analysis</em></p>
-<ul>
-<li>首先，在赋初值阶段，我们先扫描一遍目标字符串S，将其构成字符，以及其出现次数记录到你的哈希表中。特别地，我们也可以选择扫描条件字符串T，存入哈希表中。因为一般情况下，条件字符串会比目标字符串要小些，因而更有效率（？）。然后准备好其他变量。<br>于本题，本文采用第二种方式初始化哈希表，</li>
-<li>接下来我们开始“遍历”目标字符串S，并对哈希表中相应字符的键值（value）自减（-1），这个过程中将条件字符串T中字符遍历一遍，即可作为结束标志。</li>
-<li>最小窗口，即为目标字符串S中的一个特殊子串，其本身由子串开始位置的游标“Begin”和对应结束位置的游标“End”决定。简单的调动逻辑是，先移动结束游标”End”在,每一次确定结束游标时，接下来都会移动开始游标“Beigin”直至确认。此后再移动结束游标，以此反复，直至移动到目标字符串S末尾。（当然，当“End”移动S末尾时，“Begin”还有可能继续移动，以继续确认最小窗口的存在）</li>
-<li><p>具体移动游标的流程是：<br>“End”， </p>
-</li>
-<li><p><strong>变量声明</strong><br>目标字符串S，条件字符串T， </p>
-</li>
-</ul>
-</li>
-<li><p><em>code</em></p>
-</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    string minWindow(string s, string t) &#123;</span><br><span class="line">        unordered_map&lt;char, int&gt; map_letter;</span><br><span class="line">        for(auto c : t) map_letter[c]++;</span><br><span class="line">        </span><br><span class="line">        int s_curEnd = 0, s_curBegin = 0, minBegin = 0, minLen = INT_MAX;</span><br><span class="line">        int t_counter = t.size();</span><br><span class="line">        </span><br><span class="line">        while(s_curEnd &lt; s.size())&#123;</span><br><span class="line">            </span><br><span class="line">            if(map_letter[s[s_curEnd]] &gt; 0) t_counter--;</span><br><span class="line">            map_letter[s[s_curEnd]]--;</span><br><span class="line">            s_curEnd++;</span><br><span class="line">            </span><br><span class="line">            while(t_counter == 0)&#123;</span><br><span class="line">                if(s_curEnd - s_curBegin &lt; minLen)&#123;</span><br><span class="line">                    minBegin = s_curBegin;</span><br><span class="line">                    minLen = s_curEnd - s_curBegin;</span><br><span class="line">                &#125;</span><br><span class="line">                </span><br><span class="line">                map_letter[s[s_curBegin]]++;</span><br><span class="line">                if(map_letter[s[s_curBegin]] &gt; 0) t_counter++;</span><br><span class="line">                s_curBegin++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        if(minLen == INT_MAX) return &quot;&quot;;</span><br><span class="line">        return s.substr(minBegin, minLen);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
 
   
 
@@ -392,9 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/12/leetcode_479/" itemprop="url">leetcode_479</a></h1>
+          <h1 class="post-title" itemprop="name headline">leetcode_479</h1>
         
 
         <div class="post-meta">
@@ -444,9 +299,7 @@
       
 
       
-        
-          
-            <blockquote>
+        <blockquote>
 <p>Find the largest palindrome made from the product of two n-digit numbers.<br>Since the result could be very large, you should return the largest palindrome mod 1337.</p>
 <p>Example:<br>Input: 2<br>Output: 987<br>Explanation: 99 x 91 = 9009, 9009 % 1337 = 987</p>
 <p>Note:<br>The range of n is [1,8].</p>
@@ -474,8 +327,6 @@
 </li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line"></span><br><span class="line">using namespace::std;</span><br><span class="line"></span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">   int largestPalindrome(int n)&#123;</span><br><span class="line">       int mod = 1337, mark_proHalf;</span><br><span class="line">       int max_nDigit, leftPart_pro, rightPart_pro;</span><br><span class="line">       unsigned long pro;</span><br><span class="line">       </span><br><span class="line">       if(n == 1) return 9;</span><br><span class="line">       else&#123;</span><br><span class="line">           //设置标识，用以指向两数积的数位的一半。</span><br><span class="line">           mark_proHalf = (int)pow(10, n);</span><br><span class="line">           //n位数字最大值。</span><br><span class="line">           max_nDigit = (int)pow(10, n) - 1;</span><br><span class="line">           //初始化的两数积</span><br><span class="line">           pro = (unsigned long)max_nDigit * (unsigned long)max_nDigit;</span><br><span class="line">           //积的左半部分</span><br><span class="line">           leftPart_pro = (int)(pro / mark_proHalf);</span><br><span class="line">           //...</span><br><span class="line">           rightPart_pro = (int)(pro % mark_proHalf);</span><br><span class="line">           </span><br><span class="line"></span><br><span class="line">           if(leftPart_pro == reverse(rightPart_pro)) return (int)(pro % mod);</span><br><span class="line">           else&#123;</span><br><span class="line">               while(leftPart_pro != mark_proHalf / 10)&#123;  //积的左半部分不应小于n位数字最小值</span><br><span class="line">                   leftPart_pro--;  //若赋初值时不是回文数，则查找最近的回文数。</span><br><span class="line">                   pro = (unsigned long)leftPart_pro * (unsigned long)mark_proHalf + reverse(leftPart_pro);  //pro此时表示当前最近的回文数。</span><br><span class="line">                   for(int i = max_nDigit; pro / i &lt; i; i--)&#123;  //在此之前pro的值肯定变化，所以 &quot;&lt;=&quot; -&gt; &quot;&lt;&quot;</span><br><span class="line">                       if(pro % i == 0)&#123;</span><br><span class="line">                           return (int)(pro % mod);</span><br><span class="line">                       &#125;</span><br><span class="line">                   &#125;</span><br><span class="line">               &#125;</span><br><span class="line">               return (int)(pro % mod);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">private:</span><br><span class="line">    int reverse(int num)&#123;</span><br><span class="line">        int n1, n2 = 0, n3 = num;</span><br><span class="line">        </span><br><span class="line">        while(n3 != 0)&#123;</span><br><span class="line">            n1 = n3 % 10;</span><br><span class="line">            n2 = n2 * 10 + n1;</span><br><span class="line">            n3 /= 10;</span><br><span class="line">        &#125;</span><br><span class="line">        return n2;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-          
-        
       
     </div>
     
@@ -492,131 +343,32 @@
       
 
       
-
-      
-
       
       
-        <div class="post-eof"></div>
+
       
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/11/test-my-site/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/11/test-my-site/" itemprop="url">test_my_site</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-11T20:55:30+08:00">
-                2018-09-11
-              </time>
+              <a href="/2018/09/11/test-my-site/" rel="next" title="test_my_site">
+                <i class="fa fa-chevron-left"></i> test_my_site
+              </a>
             
+          </div>
 
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-
+              <a href="/2018/09/12/leetocde-76/" rel="prev" title="leetocde_76">
+                leetocde_76 <i class="fa fa-chevron-right"></i>
+              </a>
             
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -626,138 +378,11 @@
   </article>
 
 
-    
-      
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/11/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/11/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-11T20:46:00+08:00">
-                2018-09-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
-        
+    <div class="post-spread">
       
     </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
-  
 
 
           </div>
@@ -765,6 +390,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -968,6 +597,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
