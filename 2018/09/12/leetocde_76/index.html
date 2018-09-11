@@ -79,14 +79,17 @@
 
 
 
+<meta name="description" content="Given a string S and a string T, find the minimum window in S which will contain all the characters in T in complexity O(n). For example,S = “ADOBECODEBANC”T = “ABC”Minimum window is “BANC”. Note:If">
 <meta property="og:type" content="article">
-<meta property="og:title" content="test_my_site">
-<meta property="og:url" content="http://yoursite.com/2018/09/11/test-my-site/index.html">
+<meta property="og:title" content="leetocde_76">
+<meta property="og:url" content="http://yoursite.com/2018/09/12/leetocde_76/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Given a string S and a string T, find the minimum window in S which will contain all the characters in T in complexity O(n). For example,S = “ADOBECODEBANC”T = “ABC”Minimum window is “BANC”. Note:If">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-11T12:55:30.820Z">
+<meta property="og:updated_time" content="2018-09-11T16:14:02.371Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="test_my_site">
+<meta name="twitter:title" content="leetocde_76">
+<meta name="twitter:description" content="Given a string S and a string T, find the minimum window in S which will contain all the characters in T in complexity O(n). For example,S = “ADOBECODEBANC”T = “ABC”Minimum window is “BANC”. Note:If">
 
 
 
@@ -116,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/09/11/test-my-site/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/09/12/leetocde_76/"/>
 
 
 
 
 
-  <title>test_my_site | Hexo</title>
+  <title>leetocde_76 | Hexo</title>
   
 
 
@@ -229,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/11/test-my-site/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/12/leetocde_76/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John Doe">
@@ -246,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">test_my_site</h1>
+          <h1 class="post-title" itemprop="name headline">leetocde_76</h1>
         
 
         <div class="post-meta">
@@ -258,8 +261,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-11T20:55:30+08:00">
-                2018-09-11
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-12T00:13:10+08:00">
+                2018-09-12
               </time>
             
 
@@ -296,7 +299,34 @@
       
 
       
-        
+        <blockquote>
+<p>Given a string S and a string T, find the minimum window in S which will contain all the characters in T in complexity O(n).</p>
+<p>For example,<br>S = “ADOBECODEBANC”<br>T = “ABC”<br>Minimum window is “BANC”.</p>
+<p>Note:<br>If there is no such window in S that covers all characters in T, return the empty string “”.<br>If there are multiple such windows, you are guaranteed that there will always be only one unique minimum window in S.</p>
+</blockquote>
+<ol>
+<li><p><em>preview</em></p>
+<ul>
+<li>题目要求解法的时间复杂度为O(n)。显然，简单的字符匹配，<strong>暴力搜索</strong>肯定不满足这一要求。</li>
+<li>若想要通过当前字符，在一定条件内，查找到其对应字符串的位置。不妨考虑使用<strong>哈希表</strong>。</li>
+</ul>
+</li>
+<li><p><em>analysis</em></p>
+<ul>
+<li>首先，在赋初值阶段，我们先扫描一遍目标字符串S，将其构成字符，以及其出现次数记录到你的哈希表中。特别地，我们也可以选择扫描条件字符串T，存入哈希表中。因为一般情况下，条件字符串会比目标字符串要小些，因而更有效率（？）。然后准备好其他变量。<br>于本题，本文采用第二种方式初始化哈希表，</li>
+<li>接下来我们开始“遍历”目标字符串S，并对哈希表中相应字符的键值（value）自减（-1），这个过程中将条件字符串T中字符遍历一遍，即可作为结束标志。</li>
+<li>最小窗口，即为目标字符串S中的一个特殊子串，其本身由子串开始位置的游标“Begin”和对应结束位置的游标“End”决定。简单的调动逻辑是，先移动结束游标”End”在,每一次确定结束游标时，接下来都会移动开始游标“Beigin”直至确认。此后再移动结束游标，以此反复，直至移动到目标字符串S末尾。（当然，当“End”移动S末尾时，“Begin”还有可能继续移动，以继续确认最小窗口的存在）</li>
+<li><p>具体移动游标的流程是：<br>“End”， </p>
+</li>
+<li><p><strong>变量声明</strong><br>目标字符串S，条件字符串T， </p>
+</li>
+</ul>
+</li>
+<li><p><em>code</em></p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    string minWindow(string s, string t) &#123;</span><br><span class="line">        unordered_map&lt;char, int&gt; map_letter;</span><br><span class="line">        for(auto c : t) map_letter[c]++;</span><br><span class="line">        </span><br><span class="line">        int s_curEnd = 0, s_curBegin = 0, minBegin = 0, minLen = INT_MAX;</span><br><span class="line">        int t_counter = t.size();</span><br><span class="line">        </span><br><span class="line">        while(s_curEnd &lt; s.size())&#123;</span><br><span class="line">            </span><br><span class="line">            if(map_letter[s[s_curEnd]] &gt; 0) t_counter--;</span><br><span class="line">            map_letter[s[s_curEnd]]--;</span><br><span class="line">            s_curEnd++;</span><br><span class="line">            </span><br><span class="line">            while(t_counter == 0)&#123;</span><br><span class="line">                if(s_curEnd - s_curBegin &lt; minLen)&#123;</span><br><span class="line">                    minBegin = s_curBegin;</span><br><span class="line">                    minLen = s_curEnd - s_curBegin;</span><br><span class="line">                &#125;</span><br><span class="line">                </span><br><span class="line">                map_letter[s[s_curBegin]]++;</span><br><span class="line">                if(map_letter[s[s_curBegin]] &gt; 0) t_counter++;</span><br><span class="line">                s_curBegin++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        if(minLen == INT_MAX) return &quot;&quot;;</span><br><span class="line">        return s.substr(minBegin, minLen);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -320,8 +350,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/11/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2018/09/12/leetcode_479/" rel="next" title="leetcode_479">
+                <i class="fa fa-chevron-left"></i> leetcode_479
               </a>
             
           </div>
@@ -330,8 +360,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/09/12/leetcode_479/" rel="prev" title="leetcode_479">
-                leetcode_479 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/09/12/topic_Fibonacci/" rel="prev" title="topic_Fibonacci">
+                topic_Fibonacci <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
