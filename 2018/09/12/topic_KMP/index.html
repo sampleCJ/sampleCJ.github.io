@@ -79,14 +79,17 @@
 
 
 
+<meta name="description" content="如何使用next[j].… 如何构造next[j].定义: next[j] =   -1, max{k | p0p1…pk-1 = pj-kpj-k+1…pj-1, 0 &amp;lt; k &amp;lt; j}, 0  设已有next[j] = k, 即存在     “p0p1…pk-1“ = “pj-kpj-k+1…pj-1“且next[0] = -1.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="test_my_site">
-<meta property="og:url" content="http://yoursite.com/2018/09/11/test-my-site/index.html">
+<meta property="og:title" content="KMP字符串模式匹配算法">
+<meta property="og:url" content="http://yoursite.com/2018/09/12/topic_KMP/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="如何使用next[j].… 如何构造next[j].定义: next[j] =   -1, max{k | p0p1…pk-1 = pj-kpj-k+1…pj-1, 0 &amp;lt; k &amp;lt; j}, 0  设已有next[j] = k, 即存在     “p0p1…pk-1“ = “pj-kpj-k+1…pj-1“且next[0] = -1.">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-11T12:55:30.820Z">
+<meta property="og:updated_time" content="2017-10-26T16:37:33.397Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="test_my_site">
+<meta name="twitter:title" content="KMP字符串模式匹配算法">
+<meta name="twitter:description" content="如何使用next[j].… 如何构造next[j].定义: next[j] =   -1, max{k | p0p1…pk-1 = pj-kpj-k+1…pj-1, 0 &amp;lt; k &amp;lt; j}, 0  设已有next[j] = k, 即存在     “p0p1…pk-1“ = “pj-kpj-k+1…pj-1“且next[0] = -1.">
 
 
 
@@ -116,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/09/11/test-my-site/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/09/12/topic_KMP/"/>
 
 
 
 
 
-  <title>test_my_site | Hexo</title>
+  <title>KMP字符串模式匹配算法 | Hexo</title>
   
 
 
@@ -229,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/11/test-my-site/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/12/topic_KMP/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John Doe">
@@ -246,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">test_my_site</h1>
+          <h1 class="post-title" itemprop="name headline">KMP字符串模式匹配算法</h1>
         
 
         <div class="post-meta">
@@ -258,8 +261,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-11T20:55:30+08:00">
-                2018-09-11
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-12T21:11:48+08:00">
+                2018-09-12
               </time>
             
 
@@ -296,7 +299,15 @@
       
 
       
-        
+        <h2 id="如何使用next-j"><a href="#如何使用next-j" class="headerlink" title="如何使用next[j]."></a>如何使用next[j].</h2><p>…</p>
+<h2 id="如何构造next-j"><a href="#如何构造next-j" class="headerlink" title="如何构造next[j]."></a>如何构造next[j].</h2><p>定义: next[j] = </p>
+<ul>
+<li>-1,</li>
+<li>max{k | p<sub>0</sub>p<sub>1</sub>…p<sub>k-1</sub> = p<sub>j-k</sub>p<sub>j-k+1</sub>…p<sub>j-1</sub>, 0 &lt; k &lt; j},</li>
+<li>0</li>
+</ul>
+<p>设已有next[j] = k, 即存在<br>     “p<sub>0</sub>p<sub>1</sub>…p<sub>k-1</sub>“ = “p<sub>j-k</sub>p<sub>j-k+1</sub>…p<sub>j-1</sub>“<br>且next[0] = -1.</p>
+
       
     </div>
     
@@ -320,8 +331,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/11/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2018/09/12/topic_Fibonacci/" rel="next" title="topic_Fibonacci">
+                <i class="fa fa-chevron-left"></i> topic_Fibonacci
               </a>
             
           </div>
@@ -329,10 +340,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/09/12/leetcode_479/" rel="prev" title="leetcode_479">
-                leetcode_479 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -384,8 +391,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -427,6 +443,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#如何使用next-j"><span class="nav-number">1.</span> <span class="nav-text">如何使用next[j].</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何构造next-j"><span class="nav-number">2.</span> <span class="nav-text">如何构造next[j].</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
